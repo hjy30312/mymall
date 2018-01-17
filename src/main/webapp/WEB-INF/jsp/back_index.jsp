@@ -18,12 +18,15 @@
 <div class="content clearfix">
     <!--右侧内容-->
     <div class="main">
-        <div class="cont" id="selectProduct">
+        <div class="cont" >
+            <div class="details_operation clearfix" id="selectProduct">
+
+
+            </div>
 
 
 
             <table class="table table-hover table-bordered table-striped table-condensed">
-
                 <!--动态显示 -->
                 <thead id="head">
                 <!--表头-->
@@ -72,7 +75,7 @@
 
 <script>
     $(document).on('dblclick','.qqq',function () {
-        alert("123");
+
     });
 </script>
 <!--字符串拼接模板-->
@@ -146,20 +149,27 @@
                 "                <button type=\"button\" id=\"searchProduct\"  class=\"btn btn-default\">搜索</button>\n" +
                 "            </form>"
             $("#selectProduct").append(html);
+            $('button').on('click',function(){
+            });
         }
+</script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#selectProduct").delegate("button","click",function(){
+            $("#searchProduct").click(function () {
+                var productName = $("#productName").val();
+                var productId = $("#productId").val();
+                searchProductlist(productName,productId,1,10);
+            });
+        });
+    });
 </script>
 
 
 <!--商品搜索显示  包含分页-->
-<script type="text/javascript">
-    $(function () {
-        $("#searchProduct").click(function () {
-            var productName = $("#productName").val();
-            var productId = $("#productId").val();
-            searchProductlist(productName,productId,1,10);
-        });
-    });
-</script>
+
+
+
 <script type="text/javascript">
     function searchProductlist(productName,productId,pageNum,pageSize) {
         $.ajax({
@@ -225,8 +235,9 @@
 <script type="text/javascript">
     $(function () {
         $("#ProductList").click(function () {
-            productlist(1,10);
             addSearchProduct();
+            productlist(1,10);
+
         });
     });
 </script>
