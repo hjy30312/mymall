@@ -1,0 +1,9 @@
+{
+  "id":"编号",
+  "name":"名称",
+  "price": "价格",
+  "picture": "图片",
+  "describe": "详情页",
+  "functions": "操作"
+}
+

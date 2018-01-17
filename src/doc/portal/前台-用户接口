@@ -1,0 +1,51 @@
+1.登录
+/user/login.do post
+request
+username,password
+
+2.注册 /user/register.do
+request
+username,password,phone,question,answer
+
+3.检查用户名是否有效
+
+/user/check_valid.do
+request
+str
+
+4.获取登录用户信息 /user/get_user_info.do
+request
+无参数
+
+5.忘记密码 /user/forget_get_question.do
+request
+username
+
+6.提交问题答案 /user/forget_check_answer.do
+request
+username,question,answer
+
+7.忘记密码的重设密码 /user/forget_reset_password.do
+request
+username,passwordNew,forgetToken
+
+8.登录中状态重置密码 /user/reset_password.do
+request
+passwordOld,passwordNew
+
+9.登录状态更新个人信息 /user/update_information.do
+request
+phone,question,answer
+
+10.获取当前登录用户的详细信息，并强制登录 /user/get_information.do
+request
+无参数
+
+11.退出登录 /user/logout.do
+request
+无参数
+
+
+
+
+
