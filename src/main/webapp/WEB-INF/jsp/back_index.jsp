@@ -157,9 +157,9 @@
     $(document).ready(function(){
         $("#selectProduct").delegate("button","click",function(){
             $("#searchProduct").click(function () {
-                var productName = $("#productName").val();
                 var productId = $("#productId").val();
-                searchProductlist(productName,productId,1,10);
+                var productName = $("#productName").val();
+                searchProductlist(productName, productId, 1, 10);
             });
         });
     });
@@ -172,14 +172,17 @@
 
 <script type="text/javascript">
     function searchProductlist(productName,productId,pageNum,pageSize) {
+        if (productName === undefined || productName === '' ||productName === null) {
+            var str =  "&productId=" + productId + "&pageNum=" + pageNum
+                    + "&pageSize=" + pageSize;
+        } else {
+            var str = "productName=" + productName+ "&productId=" + productId
+                        + "&pageNum=" + pageNum + "&pageSize=" + pageSize;
+        }
+        console.log(str);
         $.ajax({
             url: "/manage/product/search.do",
-            data: {
-                productName:productName,
-                productId:productId,
-                pageNum: pageNum,
-                pageSize: pageSize
-            },
+            data: str,
             type: "post",
             dataType: "json",
             success: function (result) {
