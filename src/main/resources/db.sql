@@ -40,3 +40,16 @@ CREATE TABLE `mmall_product` (
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `mmall_cart` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `product_id` int(11) DEFAULT NULL COMMENT '商品id',
+  `quantity` int(11) DEFAULT NULL COMMENT '数量',
+  `checked` int(11) DEFAULT NULL COMMENT '是否选择,1=已勾选,0=未勾选',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`),
+  KEY `user_id_index` (`user_id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=146 DEFAULT CHARSET=utf8;

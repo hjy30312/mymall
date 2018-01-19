@@ -132,7 +132,6 @@
     });
 </script>
 
-
 <%--拼接商品搜索--%>
 <script type="text/javascript">
         function addSearchProduct() {
@@ -165,11 +164,7 @@
     });
 </script>
 
-
 <!--商品搜索显示  包含分页-->
-
-
-
 <script type="text/javascript">
     function searchProductlist(productName,productId,pageNum,pageSize) {
         if (productName === undefined || productName === '' ||productName === null) {
