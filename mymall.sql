@@ -1,3 +1,5 @@
+--2018-1-22  增加 客户登录名tblCustomer; 客户名称去掉UNIQUE
+
 CREATE DATABASE RBEC2018;
 USE RBEC2018;
 
@@ -6,8 +8,10 @@ USE RBEC2018;
 CREATE TABLE tblCustomer(
     --客户ID ，由公司编码
 	CustomerID VARCHAR(20) NOT NULL PRIMARY KEY ,
-	--客户名称
-	CustomerName NVARCHAR(50) NOT NULL UNIQUE,
+	--客户名称，去掉unique 约束
+	CustomerName NVARCHAR(50) NOT NULL ,
+	--客户登录名 ，2018-01-22添加
+	CustomerLoginName VARCHAR(20) NOT NULL UNIQUE,
 	--客户密码 MD5加密
 	CustomerPassword VARCHAR(50) NOT NULL,
 	--手机号
@@ -118,7 +122,7 @@ CREATE TABLE tblPart(
 
 --------6.购物车明细表------
 --DROP TABLE tblShoppingCartList
-CREATE TABLE tblShoppingCartLIst(
+CREATE TABLE tblShoppingCartList(
 	--购物车ID
 	ShoppingCartListID INT IDENTITY(1,1) PRIMARY KEY,
 	--客户ID
@@ -222,7 +226,7 @@ CREATE TABLE tblOrderHandle(
 --------11.商品入库表-----
 --DROP TABLE tblProductInbound
 CREATE TABLE tblProductInbound(
-	--商品ID
+	--商品ID
 	PartID VARCHAR(30) NOT NULL REFERENCES tblPart(PartID),
 	--雇员ID
 	EmployeeID VARCHAR(10) NOT NULL REFERENCES tblEmployee(EmployeeID),
@@ -249,4 +253,19 @@ CREATE TABLE tblSupplier(
 	--备注
 	SupplierRemark NVARCHAR(200)
 )
+方便该表
+DROP TABLE tblProductInbound
+DROP TABLE tblOrderHandle
+DROP TABLE tblOrderDetail
+DROP TABLE tblEmployee
+DROP TABLE tblOrder
+DROP TABLE tblShoppingCartList
+DROP TABLE tblPart
+DROP TABLE tblPartPrice
+DROP TABLE tblPartCatrgory
+DROP TABLE tblCustomerAddress
+DROP TABLE tblCustomer
+
+
+
 */
